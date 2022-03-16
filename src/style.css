@@ -1,0 +1,31 @@
+html {
+  font-family: sans-serif;
+  line-height:1.5;
+}
+
+.app {
+  border-radius:.3rem;
+  box-shadow:.1rem .1rem .3rem rgba(0,0,0,.3);
+  padding:.5rem; 
+  max-width:900px;
+  margin:auto;
+}
+
+.types ul {
+  list-style-type: none;
+}
+
+a:visited {
+  color:blue;
+}
+
+@media screen and (min-width:700px) {
+  .app {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+  }
+  
+  h1 {
+      grid-column:1/-1;
+  }
+}
