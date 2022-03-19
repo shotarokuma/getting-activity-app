@@ -1,7 +1,6 @@
 import React ,{useState} from "react";
 import TypeChooser from "./TypeChooser";
 import Activity from "./Activity ";
-import axios from "axios";
 
 const App = () => {
   const [type, setType] = useState();

@@ -9982,7 +9982,7 @@ var Activity = function Activity(props) {
       activity = _useState2[0],
       setActivity = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
       _useState4 = _slicedToArray(_useState3, 2),
       load = _useState4[0],
       setLoad = _useState4[1];
@@ -9994,13 +9994,15 @@ var Activity = function Activity(props) {
 
   var url = "https://www.boredapi.com/api/activity?type=".concat(props.type);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    setLoad(load ? false : true);
+  }, [activity]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (first) {
       setFirst(false);
     } else {
-      setLoad(true);
+      setActivity("loading");
       axios__WEBPACK_IMPORTED_MODULE_1___default().get(url).then(function (res) {
         setActivity(res.data.activity);
-        setLoad(false);
       })["catch"](function (e) {
         return alert(e);
       });
@@ -10040,8 +10042,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _TypeChooser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TypeChooser */ "./src/TypeChooser.js");
 /* harmony import */ var _Activity___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Activity  */ "./src/Activity .js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -10053,7 +10053,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 

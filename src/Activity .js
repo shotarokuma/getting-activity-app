@@ -3,18 +3,22 @@ import axios from "axios"
 
 const Activity = props => {
   const [activity, setActivity] = useState();
-  const [load, setLoad] = useState();
+  const [load, setLoad] = useState(true);
   const [first, setFirst]= useState(true);
-  const url = `https://www.boredapi.com/api/activity?type=${props.type}`
+  const url = `https://www.boredapi.com/api/activity?type=${props.type}`;
+
+useEffect(() => {
+  setLoad(load ? false : true);
+},[activity]);
+
  useEffect(() => {
     if(first){
      setFirst(false);
     }else{
-      setLoad(true);
+      setActivity("loading");
       axios.get(url)
       .then((res) => {
         setActivity(res.data.activity);
-        setLoad(false);
       })
       .catch((e) => alert(e));
     }
